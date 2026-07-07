@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap');
+
+@import 'tailwindcss';
+
+@theme {
+  --color-ink: #0a0a0a;
+  --color-ink-muted: #525252;
+  --color-ink-faint: #737373;
+  --color-white: #ffffff;
+  --color-surface: #f5f5f3;
+  --color-surface-2: #ececea;
+  --color-border: #e5e5e3;
+  --color-border-strong: #d4d4d2;
+  --color-gold: #a67c00;
+  --color-gold-light: #c49a1a;
+  --color-gold-dark: #8a6800;
+  --color-gold-muted: #a67c0018;
+
+  --font-sans: 'Onest', system-ui, -apple-system, sans-serif;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --shadow-sm: 0 1px 2px rgba(10, 10, 10, 0.04);
+  --shadow-md: 0 4px 24px rgba(10, 10, 10, 0.06);
+  --shadow-lg: 0 12px 48px rgba(10, 10, 10, 0.08);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply bg-white font-sans text-base font-normal leading-relaxed text-ink;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-sans font-semibold tracking-tight text-ink;
+  }
+
+  ::selection {
+    @apply bg-gold-muted text-ink;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .section-padding {
+    @apply py-24 md:py-32;
+  }
+
+  .container-custom {
+    @apply mx-auto w-full max-w-7xl px-5 md:px-8 lg:px-12;
+  }
+
+  .section-label {
+    @apply text-[11px] font-semibold uppercase tracking-[0.22em] text-gold;
+  }
+
+  .surface-card {
+    @apply rounded-2xl border border-border bg-white;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .surface-card-hover {
+    @apply transition-all duration-300;
+  }
+
+  .surface-card-hover:hover {
+    box-shadow: var(--shadow-md);
+    @apply border-border-strong;
+  }
+
+  .divider {
+    @apply h-px w-full bg-border;
+  }
+}
