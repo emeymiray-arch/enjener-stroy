@@ -1,3 +1,4 @@
+import process from 'node:process';
 import type { NotificationProvider, NotificationPayload } from '../../shared/types.js';
 
 /**
