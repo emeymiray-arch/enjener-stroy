@@ -31,8 +31,24 @@ export function AboutSection() {
           </AnimatedSection>
         </div>
 
+        <AnimatedSection delay={0.12}>
+          <div className="mt-20 grid gap-6 md:grid-cols-2">
+            {aboutContent.highlights.map((item) => (
+              <div
+                key={item.title}
+                className="surface-card p-7 md:p-8"
+              >
+                <h3 className="text-base font-semibold text-ink">{item.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-ink-muted">
+                  {item.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </AnimatedSection>
+
         <AnimatedSection delay={0.15}>
-          <div className="mt-20 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-20 grid gap-px overflow-hidden rounded-2xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">
             {aboutContent.directions.map((direction) => (
               <div
                 key={direction}
@@ -42,9 +58,9 @@ export function AboutSection() {
                 {direction}
               </div>
             ))}
-            <div className="flex items-center gap-3 bg-white px-6 py-5 text-sm font-medium text-ink-muted sm:col-span-2 lg:col-span-3">
+            <div className="flex items-center gap-3 bg-white px-6 py-5 text-sm font-medium text-ink-muted sm:col-span-2 lg:col-span-4">
               <span className="text-gold">©</span>
-              Работаем с {company.foundedYear} года · {company.shortName}
+              {aboutContent.marketExperienceLabel} · {company.shortName}
             </div>
           </div>
         </AnimatedSection>

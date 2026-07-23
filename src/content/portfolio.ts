@@ -2,45 +2,45 @@ import { stockImages } from './images';
 
 export const portfolioContent = {
   label: 'Портфолио',
-  title: 'Наши реализованные проекты',
+  title: 'Реализованные проекты',
   description:
-    'Каждый объект — это результат слаженной работы команды профессионалов и внимания к деталям.',
+    'Десятки объектов различного назначения и уровня сложности — от частных домов до зданий с комплексными инженерными системами.',
   items: [
     {
       id: 'project-1',
-      title: 'Жилой комплекс «Горный»',
-      category: 'Жилое строительство',
-      image: stockImages.portfolio.residential,
+      title: 'Частные жилые дома',
+      category: 'Индивидуальное строительство',
+      image: stockImages.portfolio.cottage,
     },
     {
       id: 'project-2',
-      title: 'Бизнес-центр «Прометей»',
+      title: 'Коммерческие здания',
       category: 'Коммерческое строительство',
       image: stockImages.portfolio.commercial,
     },
     {
       id: 'project-3',
-      title: 'Реконструкция исторического здания',
-      category: 'Реконструкция',
-      image: stockImages.portfolio.reconstruction,
+      title: 'Административные объекты',
+      category: 'Общественное строительство',
+      image: stockImages.portfolio.office,
     },
     {
       id: 'project-4',
-      title: 'Частный коттедж',
-      category: 'Индивидуальное строительство',
-      image: stockImages.portfolio.cottage,
+      title: 'Жилые комплексы',
+      category: 'Жилое строительство',
+      image: stockImages.portfolio.residential,
     },
     {
       id: 'project-5',
-      title: 'Промышленный склад',
-      category: 'Промышленное строительство',
+      title: 'Объекты с инженерными системами',
+      category: 'Инженерное строительство',
       image: stockImages.portfolio.industrial,
     },
     {
       id: 'project-6',
-      title: 'Офисное пространство',
-      category: 'Отделочные работы',
-      image: stockImages.portfolio.office,
+      title: 'Реконструкция и модернизация',
+      category: 'Реконструкция',
+      image: stockImages.portfolio.reconstruction,
     },
   ],
 } as const;

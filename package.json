@@ -1,11 +1,12 @@
 {
-  "name": "inzhener-stroy",
+  "name": "enjener-stroy",
   "private": true,
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "tsc -b tsconfig.app.json tsconfig.node.json && vite build",
+    "typecheck:api": "tsc -p tsconfig.api.json --noEmit",
     "lint": "oxlint",
     "preview": "vite preview",
     "process-logo": "node scripts/process-logo.mjs",
@@ -14,6 +15,7 @@
   "dependencies": {
     "framer-motion": "^12.42.2",
     "lucide-react": "^1.23.0",
+    "nodemailer": "^9.0.3",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-router-dom": "^7.18.1"
@@ -26,7 +28,6 @@
     "@types/react-dom": "^19.2.3",
     "@vercel/node": "^5.8.22",
     "@vitejs/plugin-react": "^6.0.3",
-    "nodemailer": "^9.0.3",
     "oxlint": "^1.71.0",
     "sharp": "^0.35.3",
     "tailwindcss": "^4.3.2",

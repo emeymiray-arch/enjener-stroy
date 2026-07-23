@@ -3,4 +3,4 @@ Allow: /
 
 Disallow: /api/
 
-Sitemap: https://inzhener-stroy.ru/sitemap.xml
+Sitemap: https://enjener-stroy.ru/sitemap.xml

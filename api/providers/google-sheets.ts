@@ -1,4 +1,4 @@
-import type { NotificationProvider, NotificationPayload } from '../../src/types';
+import type { NotificationProvider, NotificationPayload } from '../../shared/types.js';
 
 /**
  * Google Sheets integration provider.

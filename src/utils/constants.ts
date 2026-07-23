@@ -1,4 +1,4 @@
-export const COOKIE_STORAGE_KEY = 'inzhener-stroy-cookie-consent';
+export const COOKIE_STORAGE_KEY = 'enjener-stroy-cookie-consent';
 
 export const ANIMATION_DURATION = {
   fast: 0.3,

@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer';
-import type { NotificationProvider, NotificationPayload } from '../../src/types';
+import type { NotificationProvider, NotificationPayload } from '../../shared/types.js';
 
 export function createEmailProvider(): NotificationProvider | null {
   const { SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASS, CONTACT_EMAIL } =

@@ -1,10 +1,10 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import type { ContactFormData, NotificationPayload, NotificationProvider } from '../src/types';
-import { createEmailProvider } from './providers/email';
-import { createTelegramProvider } from './providers/telegram';
-import { createCrmProvider } from './providers/crm';
-import { createGoogleSheetsProvider } from './providers/google-sheets';
-import { NotificationService } from './services/notification-service';
+import type { ContactFormData, NotificationPayload, NotificationProvider } from '../shared/types.js';
+import { createEmailProvider } from './providers/email.js';
+import { createTelegramProvider } from './providers/telegram.js';
+import { createCrmProvider } from './providers/crm.js';
+import { createGoogleSheetsProvider } from './providers/google-sheets.js';
+import { NotificationService } from './services/notification-service.js';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_REGEX = /^(\+7|8)?[\s-]?\(?\d{3}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/;

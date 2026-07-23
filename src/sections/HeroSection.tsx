@@ -20,11 +20,11 @@ export function HeroSection() {
             variants={fadeInUp}
             className="pb-12 lg:pb-0"
           >
-            <p className="section-label mb-6">Грозный · Чеченская Республика</p>
+            <p className="section-label mb-6">Грозный · Северный Кавказ</p>
 
             <h1 className="text-balance text-[2.25rem] font-semibold leading-[1.08] tracking-tight md:text-5xl lg:text-[3.5rem]">
-              Строительство, ремонт и&nbsp;отделка{' '}
-              <span className="text-gold">под ключ</span>
+              Проектно-строительная компания{' '}
+              <span className="text-gold">полного цикла</span>
             </h1>
 
             <p className="mt-6 max-w-lg text-base leading-relaxed text-ink-muted md:text-lg">
