@@ -21,8 +21,8 @@ export const company = {
   postalAddress:
     '364042, Чеченская Республика, г. Грозный, Байсангуровский район, ул. Новопромысловая, д. 22',
   email: 'enjener_stroi@mail.ru',
-  phone: '+7 (928) 000-00-00',
-  phonePlaceholder: true,
+  phone: '+7 (928) 016-58-50',
+  phonePlaceholder: false,
   director: 'Магомаев Магомед-Эмин Аслудинович',
   directorBasis: 'Устава',
   bank: {

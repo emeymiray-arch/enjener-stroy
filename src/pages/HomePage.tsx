@@ -7,6 +7,7 @@ import { AdvantagesSection } from '@/sections/AdvantagesSection';
 import { PortfolioSection } from '@/sections/PortfolioSection';
 import { StagesSection } from '@/sections/StagesSection';
 import { ReviewsSection } from '@/sections/ReviewsSection';
+import { FaqSection } from '@/sections/FaqSection';
 import { ContactSection } from '@/sections/ContactSection';
 
 export function HomePage() {
@@ -21,6 +22,7 @@ export function HomePage() {
       <PortfolioSection />
       <StagesSection />
       <ReviewsSection />
+      <FaqSection />
       <ContactSection />
     </>
   );

@@ -28,8 +28,7 @@ export function ServicesSection() {
                 <div className="relative hidden w-36 shrink-0 overflow-hidden sm:block md:w-44">
                   <LazyImage
                     src={service.image}
-                    alt=""
-                    aria-hidden
+                    alt={`${service.title} в Грозном — ИНЖЕНЕР-СТРОЙ`}
                     className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                     wrapperClassName="h-full w-full min-h-[140px]"
                   />

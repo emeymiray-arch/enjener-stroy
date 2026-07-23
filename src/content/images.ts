@@ -1,4 +1,4 @@
-/** Локальные фото в public/images/ — надёжно грузятся без внешних CDN */
+/** Локальные фото в public/images/ */
 const p = (name: string) => `/images/${name}.jpg`;
 
 export const stockImages = {
@@ -13,12 +13,15 @@ export const stockImages = {
   },
 
   services: {
-    generalContracting: p('service-1'),
-    construction: p('service-2'),
-    renovation: p('service-3'),
-    finishing: p('service-4'),
-    design: p('service-5'),
-    landscaping: p('service-6'),
+    construction: p('service-construction'),
+    demolition: p('service-demolition'),
+    finishing: p('service-finishing'),
+    plumbing: p('service-plumbing'),
+    electrical: p('service-electrical'),
+    carpentry: p('service-carpentry'),
+    cleaning: p('service-cleaning'),
+    loading: p('service-loading'),
+    other: p('service-other'),
   },
 
   portfolio: {

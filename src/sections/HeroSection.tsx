@@ -20,11 +20,11 @@ export function HeroSection() {
             variants={fadeInUp}
             className="pb-12 lg:pb-0"
           >
-            <p className="section-label mb-6">Грозный · Северный Кавказ</p>
+            <p className="section-label mb-6">{heroContent.subtitle}</p>
 
             <h1 className="text-balance text-[2.25rem] font-semibold leading-[1.08] tracking-tight md:text-5xl lg:text-[3.5rem]">
-              Строительная компания в&nbsp;Грозном —{' '}
-              <span className="text-gold">полный цикл</span>
+              Строительная компания{' '}
+              <span className="text-gold">Грозный</span>
             </h1>
 
             <p className="mt-6 max-w-lg text-base leading-relaxed text-ink-muted md:text-lg">
@@ -71,7 +71,7 @@ export function HeroSection() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-surface md:aspect-[5/6] lg:aspect-auto lg:h-[min(72vh,680px)]">
               <LazyImage
                 src={heroContent.backgroundImage}
-                alt="Строительная площадка"
+                alt={heroContent.backgroundImageAlt}
                 className="h-full w-full object-cover"
                 wrapperClassName="h-full w-full"
               />

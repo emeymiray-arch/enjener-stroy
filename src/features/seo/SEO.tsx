@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { siteConfig } from '@/content/site';
 import { company } from '@/content/company';
 import { servicesContent } from '@/content/services';
+import { faqContent } from '@/content/faq';
 import type { SEOProps } from '@/types';
 
 function setMetaTag(name: string, content: string, property = false) {
@@ -26,7 +27,7 @@ function setLinkTag(rel: string, href: string) {
   element.setAttribute('href', href);
 }
 
-function buildStructuredData(pageUrl: string) {
+function buildStructuredData(pageUrl: string, pageTitle: string, pageDescription: string) {
   const logoUrl = `${siteConfig.url}${company.logo.src}`;
   const imageUrl = siteConfig.ogImage.startsWith('http')
     ? siteConfig.ogImage
@@ -46,9 +47,17 @@ function buildStructuredData(pageUrl: string) {
     '@id': `${siteConfig.url}/#organization`,
     name: company.shortName,
     legalName: company.fullName,
-    alternateName: [company.brandName, 'ИнженерСтрой', 'enjener-stroy'],
+    alternateName: [
+      company.brandName,
+      'ИнженерСтрой',
+      'строительная компания Грозный ИНЖЕНЕР-СТРОЙ',
+    ],
+    description: siteConfig.description,
     url: siteConfig.url,
-    logo: logoUrl,
+    logo: {
+      '@type': 'ImageObject',
+      url: logoUrl,
+    },
     image: imageUrl,
     email: company.email,
     ...(!company.phonePlaceholder ? { telephone: company.phone } : {}),
@@ -58,26 +67,43 @@ function buildStructuredData(pageUrl: string) {
       latitude: company.mapCoords.lat,
       longitude: company.mapCoords.lng,
     },
+    hasMap: `https://yandex.ru/maps/?pt=${company.mapCoords.lng},${company.mapCoords.lat}&z=16&l=map`,
     areaServed: [
+      { '@type': 'City', name: 'Грозный' },
       { '@type': 'AdministrativeArea', name: 'Чеченская Республика' },
       { '@type': 'AdministrativeArea', name: 'Республика Ингушетия' },
       { '@type': 'AdministrativeArea', name: 'Республика Дагестан' },
-      { '@type': 'Place', name: 'Северный Кавказ' },
     ],
     foundingDate: String(company.foundedYear),
-    numberOfEmployees: company.employees,
+    numberOfEmployees: {
+      '@type': 'QuantitativeValue',
+      value: company.employees,
+    },
     taxID: company.inn,
-    vatID: company.inn,
     priceRange: '₽₽',
-    knowsAbout: servicesContent.items.map((item) => item.title),
-    sameAs: [] as string[],
+    slogan: 'Строительная компания в Грозном — полный цикл работ',
+    knowsAbout: [
+      siteConfig.primaryKeyword,
+      ...servicesContent.items.map((item) => item.title),
+    ],
+    makesOffer: servicesContent.items.map((item) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: item.title,
+        description: item.description,
+        areaServed: siteConfig.city,
+        provider: { '@id': `${siteConfig.url}/#organization` },
+      },
+    })),
   };
 
   const website = {
     '@type': 'WebSite',
     '@id': `${siteConfig.url}/#website`,
     url: siteConfig.url,
-    name: siteConfig.name,
+    name: `${siteConfig.primaryKeyword} — ${company.brandName}`,
+    alternateName: company.shortName,
     description: siteConfig.description,
     inLanguage: siteConfig.language,
     publisher: { '@id': `${siteConfig.url}/#organization` },
@@ -87,16 +113,34 @@ function buildStructuredData(pageUrl: string) {
     '@type': 'WebPage',
     '@id': `${pageUrl}#webpage`,
     url: pageUrl,
-    name: siteConfig.title,
-    description: siteConfig.description,
+    name: pageTitle,
+    description: pageDescription,
     isPartOf: { '@id': `${siteConfig.url}/#website` },
     about: { '@id': `${siteConfig.url}/#organization` },
+    primaryImageOfPage: imageUrl,
     inLanguage: siteConfig.language,
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', 'meta[name="description"]'],
+    },
+  };
+
+  const faqPage = {
+    '@type': 'FAQPage',
+    '@id': `${siteConfig.url}/#faq`,
+    mainEntity: faqContent.items.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
   };
 
   return {
     '@context': 'https://schema.org',
-    '@graph': [organization, website, webpage],
+    '@graph': [organization, website, webpage, faqPage],
   };
 }
 
@@ -108,7 +152,7 @@ export function SEO({
 }: SEOProps) {
   const pageTitle = title ? `${title} | ${siteConfig.name}` : siteConfig.title;
   const pageDescription = description ?? siteConfig.description;
-  const pageUrl = canonical ?? siteConfig.url;
+  const pageUrl = canonical ?? siteConfig.canonical;
 
   useEffect(() => {
     document.title = pageTitle;
@@ -124,7 +168,7 @@ export function SEO({
     );
     setMetaTag('author', siteConfig.name);
     setMetaTag('geo.region', 'RU-CE');
-    setMetaTag('geo.placename', siteConfig.city);
+    setMetaTag('geo.placename', `${siteConfig.city}, ${siteConfig.region}`);
     setMetaTag(
       'geo.position',
       `${company.mapCoords.lat};${company.mapCoords.lng}`,
@@ -143,7 +187,9 @@ export function SEO({
 
     setLinkTag('canonical', pageUrl);
 
-    let hreflang = document.querySelector('link[rel="alternate"][hreflang="ru"]');
+    let hreflang = document.querySelector(
+      'link[rel="alternate"][hreflang="ru"]',
+    );
     if (!hreflang) {
       hreflang = document.createElement('link');
       hreflang.setAttribute('rel', 'alternate');
@@ -161,7 +207,7 @@ export function SEO({
     setMetaTag('og:description', pageDescription, true);
     setMetaTag('og:url', pageUrl, true);
     setMetaTag('og:image', ogImage, true);
-    setMetaTag('og:image:alt', siteConfig.title, true);
+    setMetaTag('og:image:alt', siteConfig.primaryKeyword, true);
     setMetaTag('og:locale', siteConfig.locale, true);
     setMetaTag('og:site_name', siteConfig.name, true);
 
@@ -178,7 +224,9 @@ export function SEO({
       schemaEl.setAttribute('type', 'application/ld+json');
       document.head.appendChild(schemaEl);
     }
-    schemaEl.textContent = JSON.stringify(buildStructuredData(pageUrl));
+    schemaEl.textContent = JSON.stringify(
+      buildStructuredData(pageUrl, pageTitle, pageDescription),
+    );
   }, [pageTitle, pageDescription, pageUrl, noindex]);
 
   return null;
