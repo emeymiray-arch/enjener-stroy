@@ -54,7 +54,9 @@ export function TeamSection() {
                     />
                   </div>
                   <div className="p-4 text-center">
-                    <p className="section-label mb-1.5 text-[10px]">{member.role}</p>
+                    <p className="section-label mb-1.5 text-[10px] leading-snug">
+                      {member.role}
+                    </p>
                     <h3 className="text-sm font-semibold leading-snug text-ink">
                       {member.name}
                     </h3>

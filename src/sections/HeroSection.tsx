@@ -23,8 +23,8 @@ export function HeroSection() {
             <p className="section-label mb-6">Грозный · Северный Кавказ</p>
 
             <h1 className="text-balance text-[2.25rem] font-semibold leading-[1.08] tracking-tight md:text-5xl lg:text-[3.5rem]">
-              Проектно-строительная компания{' '}
-              <span className="text-gold">полного цикла</span>
+              Строительная компания в&nbsp;Грозном —{' '}
+              <span className="text-gold">полный цикл</span>
             </h1>
 
             <p className="mt-6 max-w-lg text-base leading-relaxed text-ink-muted md:text-lg">

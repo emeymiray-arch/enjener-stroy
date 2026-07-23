@@ -3,4 +3,5 @@ Allow: /
 
 Disallow: /api/
 
+Host: https://enjener-stroy.ru
 Sitemap: https://enjener-stroy.ru/sitemap.xml
