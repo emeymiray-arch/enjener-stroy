@@ -36,6 +36,6 @@ export const siteConfig = {
   ],
 
   ogImage: '/images/hero.jpg',
-  yandexVerification: '',
+  yandexVerification: 'e62b4ef49011b228',
   googleVerification: '',
 } as const;
